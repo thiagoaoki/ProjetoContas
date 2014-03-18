@@ -9,6 +9,7 @@ public class DataBaseWrapper extends SQLiteOpenHelper {
 	 public static final String CONTAS_ID        = "_id";
 	 public static final String CONTAS_DESCRICAO = "_descricao";
 	 public static final String CONTAS_VALOR     = "_valor";
+	 public static final String CONTAS_TIPO      = "_tipo";
 
 	 private static final String DATABASE_NAME = "Contas.db";
 	 private static final int DATABASE_VERSION = 1;
@@ -16,7 +17,7 @@ public class DataBaseWrapper extends SQLiteOpenHelper {
 	 // creation SQLite statement
 	 private static final String DATABASE_CREATE = "create table " + CONTAS
 	         + "(" + CONTAS_ID + " integer primary key autoincrement, "
-	         + CONTAS_DESCRICAO + " text not null, " + CONTAS_VALOR + " text not null" + ");";
+	         + CONTAS_DESCRICAO + " text not null, " + CONTAS_VALOR + " text not null" + CONTAS_TIPO + " text not null " + ");";
 
 	 public DataBaseWrapper(Context context) {
 	     super(context, DATABASE_NAME, null, DATABASE_VERSION);
