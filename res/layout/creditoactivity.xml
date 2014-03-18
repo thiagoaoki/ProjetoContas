@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+   <TableLayout
+      android:layout_height="fill_parent"
+      android:layout_width="fill_parent" 
+      android:layout_centerHorizontal="true">
+      <TableRow>  
+         <TextView
+            android:id="@+id/lblDescricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descrição"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+         <EditText
+            android:id="@+id/txtDescricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_alignLeft="@+id/lblDescricao"
+            android:layout_below="@+id/lblDescricao"
+            android:layout_centerHorizontal="true" />            
+      </TableRow>
+      <TableRow> 
+         <TextView
+            android:id="@+id/lblValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valor"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+         <EditText
+            android:id="@+id/txtValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_alignLeft="@+id/lblValor"
+            android:layout_below="@+id/lblValor"
+            android:layout_centerHorizontal="true" />
+      </TableRow>
+      <TableRow>
+         <Button
+            android:id="@+id/btnSaveCredito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+         <Button
+            android:id="@+id/btnCancelarCredito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar" />
+      </TableRow>
+   </TableLayout>
+
+</RelativeLayout>
