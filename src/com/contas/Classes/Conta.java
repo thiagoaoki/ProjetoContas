@@ -1,10 +1,10 @@
-package com.example.teste2;
+package com.contas.Classes;
 
-public class Debito {
-
+public class Conta {
 	private int id;
 	private String descricao;
 	private String valor;
+	private String tipo;
 
 	public long getId() {
 		return id;
@@ -18,8 +18,8 @@ public class Debito {
 		return this.descricao;
 	}
 
-	public void setdescricao(String descricao) {
-		this.descricao = descricao;
+	public void setdescricao(String valor) {
+		this.descricao = valor;
 	}
 	
 	public String getvalor() {
@@ -30,9 +30,17 @@ public class Debito {
 		this.descricao = valor;
 	}	
 
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String valor) {
+		this.tipo = valor;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return descricao;
 	}
-
 }

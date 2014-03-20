@@ -2,7 +2,7 @@ package com.contas.Activitys;
 
 import java.util.List;
 
-import com.contas.Classes.Debito;
+import com.contas.Classes.Conta;
 import com.example.Databases.ContasOperations;
 import com.example.teste2.R;
 
@@ -23,7 +23,7 @@ public class DebitoActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.debitoactivity);
-		// getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		contasDBoperation = new ContasOperations(this);
 		contasDBoperation.open();
@@ -35,7 +35,7 @@ public class DebitoActivity extends ListActivity {
 				android.R.layout.simple_list_item_1, values);
 		setListAdapter(adapter);
 
-		Button btnSaveDebito = (Button) findViewById(R.id.btnSaveDebito);
+/*		Button btnSaveDebito = (Button) findViewById(R.id.btnSaveDebito);
 		btnSaveDebito.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -50,22 +50,23 @@ public class DebitoActivity extends ListActivity {
 				List<String> values = contasDBoperation.getAllConta();			
 				Log.i("TESTE", values.toString());
 			}
-		});
+		});*/
 
 
 	}
 
 	public void addUser(View view) {
-		ArrayAdapter adapter = (ArrayAdapter) getListAdapter();
-		EditText text = (EditText) findViewById(R.id.txtDescricao);
-		Debito conta = contasDBoperation.addConta(text.getText().toString());	
+		ArrayAdapter adapter  = (ArrayAdapter) getListAdapter();
+		EditText edtDescricao = (EditText) findViewById(R.id.txtDescricao);
+		EditText edtValor     = (EditText) findViewById(R.id.txtValor);
+		Conta conta = contasDBoperation.addConta(edtDescricao.getText().toString(), edtValor.getText().toString(), "DEBITO");	
 		adapter.add(conta);
 	}
 
-	// @Override
-	// public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
 	// TODO Auto-generated method stub
-	// onBackPressed();
-	// return true;
-	// }
+	    onBackPressed();
+	    return true;
+	}
 }

@@ -3,7 +3,7 @@ package com.example.Databases;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.contas.Classes.Debito;
+import com.contas.Classes.Conta;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -16,7 +16,7 @@ public class ContasOperations {
 
 	 // Database fields
 	 private DataBaseWrapper dbHelper;
-	 private String[] CONTAS_TABLE_COLUMNS = { DataBaseWrapper.CONTAS_ID, DataBaseWrapper.CONTAS_DESCRICAO };
+	 private String[] CONTAS_TABLE_COLUMNS = { DataBaseWrapper.CONTAS_ID, DataBaseWrapper.CONTAS_DESCRICAO, DataBaseWrapper.CONTAS_VALOR, DataBaseWrapper.CONTAS_TIPO };
 	 private SQLiteDatabase database;
 
 	 public ContasOperations(Context context) {
@@ -31,25 +31,25 @@ public class ContasOperations {
 	     dbHelper.close();
 	 }
 
-	 public Debito addConta(String name) {
+	 public Conta addConta(String descricao, String valor, String tipo) {
 	     ContentValues values = new ContentValues();
-	     values.put(DataBaseWrapper.CONTAS_DESCRICAO, name);
-	     values.put(DataBaseWrapper.CONTAS_VALOR, "1");
-	     long studId = database.insert(DataBaseWrapper.CONTAS, null, values);
+	     values.put(DataBaseWrapper.CONTAS_DESCRICAO, descricao);
+	     values.put(DataBaseWrapper.CONTAS_VALOR, valor);
+	     values.put(DataBaseWrapper.CONTAS_TIPO, tipo);
+	     long contaId = database.insert(DataBaseWrapper.CONTAS, null, values);
 
 	     // now that the student is created return it ...
-	     Cursor cursor = database.query(DataBaseWrapper.CONTAS,
-	             CONTAS_TABLE_COLUMNS, DataBaseWrapper.CONTAS_ID + " = "
-	                     + studId, null, null, null, null);
+	     Cursor cursor = database.query(DataBaseWrapper.CONTAS,  CONTAS_TABLE_COLUMNS, DataBaseWrapper.CONTAS_ID + " = " 
+	                     + contaId, null, null, null, null);
 
 	     cursor.moveToFirst();
 
-	     Debito newComment = parseStudent(cursor);
+	     Conta newComment = parseStudent(cursor);
 	     cursor.close();
 	     return newComment;
 	 }
 
-	 public void deleteConta(Debito comment) {
+	 public void deleteConta(Conta comment) {
 	     long id = comment.getId();
 	     System.out.println("Comment deleted with id: " + id);
 	     database.delete(DataBaseWrapper.CONTAS, DataBaseWrapper.CONTAS_ID
@@ -64,7 +64,7 @@ public class ContasOperations {
 				 
 	     cursor.moveToFirst();
 	     while (!cursor.isAfterLast()) {
-	         Debito conta = parseStudent(cursor);
+	         Conta conta = parseStudent(cursor);
 	         contas.add(conta);
 	         //Log.i("TESTE2", student.getdescricao());
 	         cursor.moveToNext();
@@ -73,10 +73,12 @@ public class ContasOperations {
 	     return contas;
 	 }
 
-	 private Debito parseStudent(Cursor cursor) {
-		 Debito conta = new Debito();
+	 private Conta parseStudent(Cursor cursor) {
+		 Conta conta = new Conta();
 	     conta.setId((cursor.getInt(0)));
 	     conta.setdescricao(cursor.getString(1));
+	     conta.setValor(cursor.getString(1));
+	     conta.setTipo(cursor.getString(1));
 	     return conta;
 	 }
 
