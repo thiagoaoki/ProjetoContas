@@ -44,7 +44,7 @@ public class ContasOperations {
 
 	     cursor.moveToFirst();
 
-	     Conta newComment = parseStudent(cursor);
+	     Conta newComment = parseConta(cursor);
 	     cursor.close();
 	     return newComment;
 	 }
@@ -56,24 +56,24 @@ public class ContasOperations {
 	             + " = " + id, null);
 	 }
 
-	 public List<String> getAllConta() {
+	 public List<String> getAllConta(String clausula) {
 	     List contas = new ArrayList();
-
+	     
 	     Cursor cursor = database.query(DataBaseWrapper.CONTAS,
-	             CONTAS_TABLE_COLUMNS, null, null, null, null, null);
+	             CONTAS_TABLE_COLUMNS, clausula, null, null, null, null);
 				 
 	     cursor.moveToFirst();
 	     while (!cursor.isAfterLast()) {
-	         Conta conta = parseStudent(cursor);
+	         Conta conta = parseConta(cursor);	         
 	         contas.add(conta);
-	         //Log.i("TESTE2", student.getdescricao());
 	         cursor.moveToNext();
 	     }
-	     cursor.close();
-	     return contas;
+	     cursor.close();	    
+	     
+	     return contas;	     	     
 	 }
 
-	 private Conta parseStudent(Cursor cursor) {
+	 private Conta parseConta(Cursor cursor) {
 		 Conta conta = new Conta();
 	     conta.setId((cursor.getInt(0)));
 	     conta.setdescricao(cursor.getString(1));

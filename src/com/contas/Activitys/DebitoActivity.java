@@ -28,14 +28,15 @@ public class DebitoActivity extends ListActivity {
 		contasDBoperation = new ContasOperations(this);
 		contasDBoperation.open();
 
-		List values = contasDBoperation.getAllConta();
+		List values = contasDBoperation.getAllConta(" _tipo = '" + "DEBITO" + "'");
+		
 		// Use the SimpleCursorAdapter to show the
 		// elements in a ListView
 		ArrayAdapter adapter = new ArrayAdapter(this,
 				android.R.layout.simple_list_item_1, values);
 		setListAdapter(adapter);
 
-/*		Button btnSaveDebito = (Button) findViewById(R.id.btnSaveDebito);
+		Button btnSaveDebito = (Button) findViewById(R.id.btnSaveDebito);
 		btnSaveDebito.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -47,12 +48,10 @@ public class DebitoActivity extends ListActivity {
 		btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				List<String> values = contasDBoperation.getAllConta();			
+				List<String> values = contasDBoperation.getAllConta(" _tipo = '" + "DEBITO" + "'");			
 				Log.i("TESTE", values.toString());
 			}
-		});*/
-
-
+		});
 	}
 
 	public void addUser(View view) {
