@@ -31,6 +31,7 @@ public class CreditoActivity extends ListActivity{
 
 		List values = contasDBoperation.getAllConta(" _tipo = '" + "CREDITO" + "'");
 	 		
+		Log.i("CreditoActivity", values.toString());
 		// Use the SimpleCursorAdapter to show the
 		// elements in a ListView
 		ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, values);

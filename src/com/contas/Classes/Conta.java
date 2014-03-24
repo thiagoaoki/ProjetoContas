@@ -27,7 +27,7 @@ public class Conta {
 	}
 
 	public void setValor(String valor) {
-		this.descricao = valor;
+		this.valor = valor;
 	}	
 
 	public String getTipo() {

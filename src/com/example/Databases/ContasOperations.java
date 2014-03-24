@@ -57,15 +57,15 @@ public class ContasOperations {
 	 }
 
 	 public List<String> getAllConta(String clausula) {
-	     List contas = new ArrayList();
+	     List<String> contas = new ArrayList();
 	     
 	     Cursor cursor = database.query(DataBaseWrapper.CONTAS,
 	             CONTAS_TABLE_COLUMNS, clausula, null, null, null, null);
-				 
+	    
 	     cursor.moveToFirst();
 	     while (!cursor.isAfterLast()) {
 	         Conta conta = parseConta(cursor);	         
-	         contas.add(conta);
+	         contas.add(conta.getdescricao() + " - " + conta.getvalor());
 	         cursor.moveToNext();
 	     }
 	     cursor.close();	    
@@ -77,8 +77,9 @@ public class ContasOperations {
 		 Conta conta = new Conta();
 	     conta.setId((cursor.getInt(0)));
 	     conta.setdescricao(cursor.getString(1));
-	     conta.setValor(cursor.getString(1));
-	     conta.setTipo(cursor.getString(1));
+	     conta.setValor(cursor.getString(2));
+	     conta.setTipo(cursor.getString(3));
+	     
 	     return conta;
 	 }
 
