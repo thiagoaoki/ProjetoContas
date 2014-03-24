@@ -51,7 +51,7 @@ public class CreditoActivity extends ListActivity{
 		EditText edtDescricao = (EditText) findViewById(R.id.txtDescricao);
 		EditText edtValor     = (EditText) findViewById(R.id.txtValor);
 		Conta conta = contasDBoperation.addConta(edtDescricao.getText().toString(), edtValor.getText().toString(), "CREDITO");	
-		adapter.add(conta);
+		adapter.add(conta.getdescricao() + " - " + conta.getvalor());
 	}
 		
 	@Override
