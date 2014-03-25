@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,7 +26,7 @@ public class CreditoActivity extends ListActivity{
 	    setContentView(R.layout.creditoactivity);
 	  
 	    getActionBar().setDisplayHomeAsUpEnabled(true);
-	  
+	     
 		contasDBoperation = new ContasOperations(this);
 		contasDBoperation.open();
 
