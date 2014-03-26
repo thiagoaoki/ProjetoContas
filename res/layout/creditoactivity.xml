@@ -14,17 +14,10 @@
 
             <TextView
                 android:id="@+id/lblDescricao"
-                android:layout_width="50sp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="Descrição"
-                android:textSize="18sp" />
+                android:text="Descrição" />
 
             <EditText
                 android:id="@+id/txtDescricao"
-                android:layout_width="50sp"
-                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/lblDescricao"
                 android:layout_below="@+id/lblDescricao" />
         </TableRow>

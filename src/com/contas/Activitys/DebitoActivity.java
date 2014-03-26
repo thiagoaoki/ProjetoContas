@@ -43,15 +43,6 @@ public class DebitoActivity extends ListActivity {
 				addUser(v);
 			}
 		});
-		
-		Button btn = (Button) findViewById(R.id.btnList);
-		btn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				List<String> values = contasDBoperation.getAllConta(" _tipo = '" + "DEBITO" + "'");			
-				Log.i("TESTE", values.toString());
-			}
-		});
 	}
 
 	public void addUser(View view) {

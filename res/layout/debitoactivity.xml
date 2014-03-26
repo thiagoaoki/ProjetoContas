@@ -1,57 +1,57 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
-    <TableLayout
-        android:id="@+id/tableLayout1"
-        android:layout_width="fill_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   
+    <!-- Dados Rereferentes ao HEADER -->
+    <RelativeLayout
+        android:id="@+id/header"               
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="0.72" >
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/lblDescricao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="Descrição" />
-
-            <EditText
-                android:id="@+id/txtDescricao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/lblDescricao"
-                android:layout_below="@+id/lblDescricao"
-                android:layout_centerHorizontal="true"
-                android:textSize="18sp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/lblValor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="Valor" />
-
-            <EditText
-                android:id="@+id/txtValor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/lblValor"
-                android:layout_below="@+id/lblValor"
-                android:layout_centerHorizontal="true"
-                android:textSize="18sp" />
-        </TableRow>
-
-        <TableRow>
-
+        android:layout_alignParentTop="true">
+        
+        <LinearLayout
+            android:id="@+id/dadosDescricao"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+	        
+	        <!-- Dados DESCRICAO -->
+	        <TextView
+	            android:id="@+id/lblDescricao"    
+	            android:text="Descrição"        
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" />
+	
+	        <EditText
+	            android:id="@+id/txtDescricao"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/lblValor" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/dadosDescricao" >        
+        	<!-- Dados VALOR --> 
+	        <TextView
+	            android:id="@+id/lblValor"
+	            android:text="Valor"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" />
+	
+	        <EditText
+	            android:id="@+id/txtValor"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" />
+        </LinearLayout>
+             
+	    <LinearLayout
+	        android:id="@+id/dadosBotoes"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/lblValor" >
+            
             <Button
                 android:id="@+id/btnSaveDebito"
                 android:layout_width="wrap_content"
@@ -63,32 +63,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancelar" />
-
-            <Button
-                android:id="@+id/btnList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-        </TableRow>
+	    </LinearLayout>         
+    </RelativeLayout>    
+    
+    <!-- Dados Rereferentes ao CENTER -->
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/header"
+        android:gravity="center" >
 
         <ListView
             android:id="@android:id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
-
-    <TextView
-        android:id="@+id/footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    
+    <!-- Dados Rereferentes ao FOOTER -->
+    <RelativeLayout
+        android:id="@+id/footer"               
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#333333"
-        android:gravity="center"
-        android:paddingBottom="8dip"
-        android:paddingLeft="16dip"
-        android:paddingRight="16dip"
-        android:paddingTop="8dip"
-        android:text="Fotter"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/primary_text_dark" />
-
-</LinearLayout>
+        android:layout_alignParentBottom="true">
+                
+        <TextView
+	        android:id="@+id/txtTotalDebito"	        
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="Total de Debitos"
+	        android:background="#333333"        	        
+	        android:textColor="@android:color/primary_text_dark"
+	        android:gravity="center_horizontal" />        
+    </RelativeLayout>
+        
+</RelativeLayout>
