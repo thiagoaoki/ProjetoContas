@@ -65,7 +65,8 @@ public class ContasOperations {
 	     cursor.moveToFirst();
 	     while (!cursor.isAfterLast()) {
 	         Conta conta = parseConta(cursor);	         
-	         contas.add(conta.getdescricao() + " - " + conta.getvalor());
+	         contas.add(conta.getdescricao());
+	         contas.add(conta.getvalor().toString());
 	         cursor.moveToNext();
 	     }
 	     cursor.close();	    
@@ -77,7 +78,7 @@ public class ContasOperations {
 		 Conta conta = new Conta();
 	     conta.setId((cursor.getInt(0)));
 	     conta.setdescricao(cursor.getString(1));
-	     conta.setValor(cursor.getString(2));
+	     conta.setValor(cursor.getDouble(2));
 	     conta.setTipo(cursor.getString(3));
 	     
 	     return conta;

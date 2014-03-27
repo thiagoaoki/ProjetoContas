@@ -1,9 +1,11 @@
 package com.contas.Classes;
 
+import java.util.Currency;
+
 public class Conta {
 	private int id;
 	private String descricao;
-	private String valor;
+	private Double valor;
 	private String tipo;
 
 	public long getId() {
@@ -22,11 +24,11 @@ public class Conta {
 		this.descricao = valor;
 	}
 	
-	public String getvalor() {
+	public Double getvalor() {
 		return this.valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}	
 

@@ -16,7 +16,7 @@ public class DataBaseWrapper extends SQLiteOpenHelper {
 
 	 // creation SQLite statement
 	 private static final String DATABASE_CREATE = "create table " + CONTAS + "(" + CONTAS_ID + " integer primary key autoincrement, "
-	                                               + CONTAS_DESCRICAO + " text not null, " + CONTAS_VALOR + " text not null, " + CONTAS_TIPO + " text not null " + ");";
+	                                               + CONTAS_DESCRICAO + " text not null, " + CONTAS_VALOR + " real not null, " + CONTAS_TIPO + " text not null " + ");";
 
 	 public DataBaseWrapper(Context context) {
 	     super(context, DATABASE_NAME, null, DATABASE_VERSION);
