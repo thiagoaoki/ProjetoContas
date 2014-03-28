@@ -34,7 +34,7 @@ public class ContasOperations {
 	 public Conta addConta(String descricao, String valor, String tipo) {
 	     ContentValues values = new ContentValues();
 	     values.put(DataBaseWrapper.CONTAS_DESCRICAO, descricao);
-	     values.put(DataBaseWrapper.CONTAS_VALOR, valor);
+	     values.put(DataBaseWrapper.CONTAS_VALOR, Double.parseDouble(valor));
 	     values.put(DataBaseWrapper.CONTAS_TIPO, tipo);
 	     long contaId = database.insert(DataBaseWrapper.CONTAS, null, values);
 
