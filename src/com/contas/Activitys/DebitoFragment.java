@@ -73,4 +73,8 @@ public class DebitoFragment extends Fragment {
 		}
 		return total;
 	}
+	
+	public void atualizaList(){
+		
+	}
 }
