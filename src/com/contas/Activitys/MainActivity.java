@@ -165,12 +165,12 @@ public class MainActivity extends Activity {
 	        	fragment = new DebitoFragment();
 	            break;            	                 
 	        default:
-	        	fragment = new PlanetFragment();
+	        	fragment = new HomeFragment();
 	        	break;
         }
                              
         Bundle args = new Bundle();
-        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
+        args.putInt(HomeFragment.ARG_PLANET_NUMBER, position);
         fragment.setArguments(args);
 
         FragmentManager fragmentManager = getFragmentManager();
@@ -208,16 +208,16 @@ public class MainActivity extends Activity {
     }
 
     /** Fragment that appears in the "content_frame", shows a planet */
-    public static class PlanetFragment extends Fragment {
+    public static class HomeFragment extends Fragment {
         public static final String ARG_PLANET_NUMBER = "planet_number";
 
-        public PlanetFragment() {
+        public HomeFragment() {
             // Empty constructor required for fragment subclasses
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
+            View rootView = inflater.inflate(R.layout.home_fragment, container, false);
             int i = getArguments().getInt(ARG_PLANET_NUMBER);
             String planet = getResources().getStringArray(R.array.planets_array)[i];
 

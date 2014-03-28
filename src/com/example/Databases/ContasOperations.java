@@ -56,8 +56,8 @@ public class ContasOperations {
 	             + " = " + id, null);
 	 }
 
-	 public List<String> getAllConta(String clausula) {
-	     List<String> contas = new ArrayList();
+	 public List<Conta> getAllConta(String clausula) {
+	     List<Conta> contas = new ArrayList();
 	     
 	     Cursor cursor = database.query(DataBaseWrapper.CONTAS,
 	             CONTAS_TABLE_COLUMNS, clausula, null, null, null, null);
@@ -65,8 +65,7 @@ public class ContasOperations {
 	     cursor.moveToFirst();
 	     while (!cursor.isAfterLast()) {
 	         Conta conta = parseConta(cursor);	         
-	         contas.add(conta.getdescricao());
-	         contas.add(conta.getvalor().toString());
+	         contas.add(conta);
 	         cursor.moveToNext();
 	     }
 	     cursor.close();	    

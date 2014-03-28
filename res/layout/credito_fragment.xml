@@ -51,7 +51,7 @@
              
 	    <LinearLayout
 	        android:id="@+id/dadosBotoes"
-	        android:layout_width="wrap_content"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_below="@+id/lblValor" >
             
@@ -59,13 +59,15 @@
                 android:id="@+id/btnSaveCredito"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save" />
+                android:text="Save" 
+                android:layout_weight="1"/>
 
             <Button
                 android:id="@+id/btnCancelarCredito"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancelar" />
+                android:text="Cancelar"
+                android:layout_weight="1" />
 	    </LinearLayout>
 	    
 	    <LinearLayout
@@ -76,23 +78,13 @@
             
             <TextView
 	            android:id="@+id/lblGridDescricao"
-	            android:text="Descrição"
+	            android:text="Lançamentos"
 	            android:textSize="14sp"
 	            android:textColor="@android:color/primary_text_dark"
 	            android:background="#333333"
-	            android:layout_width="0dp"
-                android:layout_weight="1"	            
-	            android:layout_height="wrap_content" />
-            
-            <TextView
-	            android:id="@+id/lblGridValor"
-	            android:text="Valor"
-	            android:textSize="14sp"
-	            android:textColor="@android:color/primary_text_dark"
-	            android:background="#333333"
-	            android:layout_width="0dp"
-                android:layout_weight="1"
-	            android:layout_height="wrap_content" />
+	            android:layout_width="fill_parent"                
+	            android:layout_height="wrap_content"
+	            android:gravity="center" />           
         </LinearLayout>    
     </RelativeLayout>    
     
@@ -105,7 +97,7 @@
         android:layout_below="@+id/header"
         android:gravity="center" >
 	    	    
-        <GridView 
+        <ListView 
 		    android:id="@+id/gridList"
 		    android:layout_width="fill_parent" 
 		    android:layout_height="wrap_content"
