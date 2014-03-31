@@ -7,6 +7,7 @@ import org.xml.sax.Parser;
 import com.contas.Classes.Conta;
 import com.contas.Classes.ContaAdapter;
 import com.example.Databases.*;
+import com.contas.Classes.SwipeDismissListViewTouchListener;
 import com.example.teste2.R;
 
 import android.app.Fragment;
@@ -39,6 +40,28 @@ public class DebitoFragment extends Fragment {
 		List<Conta> values = contasDBoperation.getAllConta(" _tipo = '" + "DEBITO" + "'");
 		
 		ContaAdapter adapter = new ContaAdapter(rootView.getContext(), R.layout.single_list_item_conta, values);
+		
+		
+		SwipeDismissListViewTouchListener touchListener =
+                new SwipeDismissListViewTouchListener(
+                        listView,
+                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                            @Override
+                            public boolean canDismiss(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                	removeUser(position); //adapter.remove(adapter.getItem(position));
+                                }
+                            }
+                        });
+		
+        listView.setOnTouchListener(touchListener);
+        listView.setOnScrollListener(touchListener.makeScrollListener());
+		
 		listView.setAdapter(adapter);
 		txtTotal.setText(getTotalContas(values).toString());
 
@@ -79,7 +102,17 @@ public class DebitoFragment extends Fragment {
 		return total;
 	}
 	
-	public void atualizaList(){
+	public void removeUser(Integer pos) {
+		Double aux = Double.parseDouble(txtTotal.getText().toString());
+		ContaAdapter adapter  = (ContaAdapter) listView.getAdapter();
+		txtTotal              = (TextView) rootView.findViewById(R.id.txtTotalDebito);
+		Conta conta           = adapter.getItem(pos);		
+		aux -= conta.getvalor();
 		
+		contasDBoperation.deleteConta(conta);
+		adapter.remove(adapter.getItem(pos));
+				
+		txtTotal.setText(aux.toString());
+		adapter.notifyDataSetChanged();
 	}
 }
