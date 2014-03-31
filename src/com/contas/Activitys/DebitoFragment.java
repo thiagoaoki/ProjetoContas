@@ -2,6 +2,8 @@ package com.contas.Activitys;
 
 import java.util.List;
 
+import org.xml.sax.Parser;
+
 import com.contas.Classes.Conta;
 import com.contas.Classes.ContaAdapter;
 import com.example.Databases.*;
@@ -59,10 +61,13 @@ public class DebitoFragment extends Fragment {
 		ContaAdapter adapter  = (ContaAdapter) listView.getAdapter();
 		EditText edtDescricao = (EditText) rootView.findViewById(R.id.txtDescricao);
 		EditText edtValor     = (EditText) rootView.findViewById(R.id.txtValor);
-		txtTotal              = (TextView) rootView.findViewById(R.id.txtTotalDebito);
-		
+		txtTotal              = (TextView) rootView.findViewById(R.id.txtTotalDebito);		
 		Conta conta           = contasDBoperation.addConta(edtDescricao.getText().toString(), edtValor.getText().toString(), "DEBITO");
-		adapter.add(conta);	 
+		adapter.add(conta);
+		
+		Double aux = Double.parseDouble(txtTotal.getText().toString());
+		aux += conta.getvalor();
+		txtTotal.setText(aux.toString());
 	}
 	
 	public Double getTotalContas(List<Conta> obj){
